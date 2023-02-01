@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--起别名:暴露pojo包下的java文件-->
+    <typeAliases>
+        <package name="com.itheima.pojo"/>
+    </typeAliases>
+
+    <!--配置mybatis环境-->
+    <environments default="development">    <!--环境配置:从多个配置环境中,选择通过id选择一个配置环境-->
+
+        <environment id="development">       <!--环境一:id为此环境的唯一标识-->
+            <transactionManager type="JDBC"/>   <!--事务的管理方式:JDBC-->
+            <dataSource type="POOLED">      <!--数据库连接池-->
+                <!--数据库连接信息-->
+                <property name="driver" value="com.mysql.jdbc.Driver"/> <!--注册驱动-->
+                <property name="url" value="jdbc:mysql:///db1?useSSL=false"/>   <!--url-->
+                <property name="username" value="root"/>    <!--用户名-->
+                <property name="password" value="liang521.."/>  <!--密码-->
+            </dataSource>
+        </environment>  <!--环境一配置完成-->
+
+        <!--可继续配置环境二....灵活切换数据库配置-->
+    </environments>
+
+    <!--mapper代理-->
+    <mappers>
+        <!--扫描mapper-->
+        <package name="com.itheima.mapper"/>
+    </mappers>
+
+</configuration>
